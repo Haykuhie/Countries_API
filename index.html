@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Countries API</title>
+</head>
+<body>
+  <div class="container"> 
+    <header>
+        <div class="countriesInfo"> Countries Info</div>
+        <div class="searchArea"> 
+            <input type="text" placeholder="Search the country by it's name">
+            <button class="searchBtn">Search</button>
+        </div>
+    </header>
+    <main>
+        <button class="seeAllCountriesBtn">All countries</button>
+        <table id="table">                
+           <tbody></tbody>          
+        </table>        
+    </main>
+    <div class="forFlex">
+       <div class="forFlag bkgImage"></div>
+       <p class="countryName"></p>
+    </div>
+    <div class="forFlex lastDiv">
+       <div class="countryInfo"></div>
+       <div class="countryCoatOfArms bkgImage"></div>
+    </div>
+  </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
