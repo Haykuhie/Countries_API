@@ -23,7 +23,6 @@ seeAllCountriesBtn.addEventListener('click', ()=>{
         if(!countryListFlag){
             createTableHeaders('Country Name', 'Region', 'Territory', 'Population')
             appendTableRowsToTable()  
-            console.log(tableRows.length)
             countryListFlag=true      
         }        
     }catch{
@@ -35,16 +34,15 @@ searchButton.addEventListener('click', async ()=> {
     try{
         if(!!searchInput.value){   
         let  searchedCountryInfo = await searchedCountryFetch(`${searchByNameUrl}/${searchInput.value}`)
+        searchInput.value=''
         let arrOfCountryInfo=searchedCountryInfo.split(';')
         let lastIndex=arrOfCountryInfo.length-1
         countryName.innerText= `${arrOfCountryInfo[lastIndex]}` 
         countryFlag.style.backgroundImage =`url(${arrOfCountryInfo[lastIndex-1].trim()})` 
-        clearDataFromAllFields( countryInfo, searchInput)
-        if(!!tableRows.length) table.deleteTHead() 
-
+        clearDataFromAllFields( countryInfo)         
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms)
+        if(!!tableRows.length) table.deleteTHead()
         countryListFlag=false
-        searchInput.value=''
          }else alert('Please enter some value to search!')
     }catch{
         alert('Something went wrong, type the country name more specifically or try later!')
@@ -58,12 +56,8 @@ table.addEventListener('click', async (event)=> {
         let arrOfCountryInfo=searchedCountryInfo.split(';')
         let lastIndex=arrOfCountryInfo.length-1
         countryName.innerText= `${arrOfCountryInfo[lastIndex]}` 
-        countryFlag.style.backgroundImage =`url(${arrOfCountryInfo[lastIndex-1].trim()})` 
-        
-        
-       if(!!tableRows.length){
-        table.deleteTHead()        
-      }
+        countryFlag.style.backgroundImage =`url(${arrOfCountryInfo[lastIndex-1].trim()})`        
+        if(!!tableRows.length) table.deleteTHead()     
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms) 
         countryListFlag=false
     }catch{

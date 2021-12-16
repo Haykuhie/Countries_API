@@ -12,9 +12,9 @@ export async function searchedCountryFetch(url){
                   Timezones in the country: ${data[0].timezones};
                   Area of the country: ${data[0].area.toLocaleString()} sq km;
                   The country is landlocked: ${data[0].landlocked};
-                   ${data[0].coatOfArms.png};
-                   ${data[0].flags.png};
-                   ${data[0].name.official}`
+                  ${data[0].coatOfArms.png};
+                  ${data[0].flags.png};
+                  ${data[0].name.official}`
   ) 
   return countryInfo
 }

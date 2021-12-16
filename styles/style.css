@@ -24,6 +24,9 @@ header{
     width:60%;
     height:400px;
     line-height:30px;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position: left;
 }
 .forFlex{
     display:flex;
