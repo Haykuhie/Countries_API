@@ -18,12 +18,14 @@ const bkgImages=document.querySelectorAll('.bkgImage');
 let countryListFlag=false
 
 seeAllCountriesBtn.addEventListener('click', ()=>{
-    try{  
+    try{
+        clearDataFromAllFields( countryInfo, countryName, bkgImages[0], bkgImages[1])         
+        if(!countryListFlag){
             createTableHeaders('Country Name', 'Region', 'Territory', 'Population')
             appendTableRowsToTable()  
             console.log(tableRows.length)
             countryListFlag=true      
-             
+        }        
     }catch{
         alert('Something went wrong, please try later!')
     }     
@@ -37,7 +39,8 @@ searchButton.addEventListener('click', async ()=> {
         let lastIndex=arrOfCountryInfo.length-1
         countryName.innerText= `${arrOfCountryInfo[lastIndex]}` 
         countryFlag.style.backgroundImage =`url(${arrOfCountryInfo[lastIndex-1].trim()})` 
-        
+        clearDataFromAllFields( countryInfo, searchInput)
+        if(!!tableRows.length) table.deleteTHead() 
 
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms)
         countryListFlag=false
@@ -58,7 +61,9 @@ table.addEventListener('click', async (event)=> {
         countryFlag.style.backgroundImage =`url(${arrOfCountryInfo[lastIndex-1].trim()})` 
         
         
-       
+       if(!!tableRows.length){
+        table.deleteTHead()        
+      }
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms) 
         countryListFlag=false
     }catch{
