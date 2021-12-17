@@ -3,7 +3,9 @@ import {searchByNameUrl} from './constants/url.constants.js';
 import {searchedCountryFetch} from './helpers/searchedCountryFetch.js';
 import {clearDataFromAllFields} from './helpers/clearDataFromAllFields.js';
 import {createCountryInfoRow} from './helpers/createCountryInfoRow.js';
-import {createTableHeaders} from './helpers/createTableHeaders.js'
+import {createTableHeaders} from './helpers/createTableHeaders.js';
+import {sectionAppear} from './helpers/sectionAppear.js';
+import {sectionDisappear} from './helpers/sectionDisappear.js';
 
 const searchInput= document.querySelector('input');
 const searchButton= document.querySelector('.searchBtn');
@@ -23,7 +25,10 @@ seeAllCountriesBtn.addEventListener('click', ()=>{
         if(!countryListFlag){
             createTableHeaders('Country Name', 'Region', 'Territory', 'Population')
             appendTableRowsToTable()  
-            countryListFlag=true      
+            countryListFlag=true 
+           // countryInfo.style.display='none'
+            //countryCoatOfArms.style.display='none'
+            sectionDisappear(countryInfo, countryCoatOfArms)   
         }        
     }catch{
         alert('Something went wrong, please try later!')
@@ -43,6 +48,7 @@ searchButton.addEventListener('click', async ()=> {
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms)
         if(!!tableRows.length) table.deleteTHead()
         countryListFlag=false
+         sectionAppear(countryInfo, countryCoatOfArms)
          }else alert('Please enter some value to search!')
     }catch{
         alert('Something went wrong, type the country name more specifically or try later!')
@@ -60,6 +66,7 @@ table.addEventListener('click', async (event)=> {
         if(!!tableRows.length) table.deleteTHead()     
         createCountryInfoRow(arrOfCountryInfo, countryInfo, countryCoatOfArms) 
         countryListFlag=false
+        sectionAppear(countryInfo,countryCoatOfArms )
     }catch{
         alert('Something went wrong, please try later!')
     }
